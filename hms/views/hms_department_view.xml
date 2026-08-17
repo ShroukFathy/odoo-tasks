@@ -1,0 +1,34 @@
+<odoo>
+    <record id="departments_list" model="ir.ui.view">
+        <field name="name">hms.department.list</field>
+        <field name="model">hms.department</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="capacity"/>
+                <field name="state"/>
+
+            </list>
+        </field>
+    </record>
+    <record id="departments_form" model="ir.ui.view">
+        <field name="name">hms.departments.form</field>
+        <field name="model">hms.department</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                <field name="name"/>
+                <field name="capacity"/>
+                <field name="state"/>
+                <field name="doctor_id"/>
+        </group>
+            </form>
+        </field>
+    </record>
+    <record id="hms_department_action" model="ir.actions.act_window">
+        <field name="name">Departments</field>
+        <field name="res_model">hms.department</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="hms_department" name="Departments" parent="hms_root" action="hms_department_action"/>
+</odoo>

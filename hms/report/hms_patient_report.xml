@@ -1,0 +1,57 @@
+<odoo>
+    <record id="action_report_hms_patient" model="ir.actions.report">
+        <field name="name">Patient Status Report</field>
+        <field name="model">hms.patient</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hms.report_hms_patient_document</field>
+        <field name="report_file">hms.report_hms_patient_document</field>
+        <field name="binding_model_id" ref="model_hms_patient"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_hms_patient_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Patient Status Report</h2>
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <p><strong>Name:</strong>
+                                    <span t-esc="doc.first_name"/> <span t-esc="doc.last_name"/></p>
+                                <p><strong>Age:</strong> <span t-esc="doc.age"/></p>
+                                <p><strong>Department:</strong> <span t-esc="doc.department_id.name"/></p>
+                                <p><strong>Doctors:</strong>
+                                    <span t-esc="', '.join(doc.doctor_id.mapped('name'))"/></p>
+                            </div>
+                            <div class="col-6">
+                                <p><strong>Birth date:</strong> <span t-esc="doc.birth_date"/></p>
+                                <p><strong>PCR:</strong> <span t-esc="doc.pcr"/></p>
+                                <p><strong>Blood Type:</strong> <span t-esc="doc.blood_type"/></p>
+                                <p><strong>Email:</strong> <span t-esc="doc.email"/></p>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-4">Log History</h4>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Date</th>
+                                    <th>Info</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.log_ids" t-as="log">
+                                    <td t-esc="log.created_by.name"/>
+                                    <td t-esc="log.date"/>
+                                    <td t-esc="log.description"/>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
