@@ -1,0 +1,22 @@
+<odoo>
+    <record id="module_category_project_cost" model="ir.module.category">
+        <field name="name">Project Cost Estimate</field>
+    </record>
+
+    <record id="group_project_cost_user" model="res.groups">
+        <field name="name">Project User</field>
+        <field name="category_id" ref="module_category_project_cost"/>
+    </record>
+
+    <record id="group_project_cost_admin" model="res.groups">
+        <field name="name">Project Admin</field>
+        <field name="category_id" ref="module_category_project_cost"/>
+        <field name="implied_ids" eval="[(4, ref('group_project_cost_user'))]"/>
+    </record>
+
+    <record id="group_project_super_admin" model="res.groups">
+        <field name="name">super admin</field>
+        <field name="category_id" ref="module_category_project_cost"/>
+        <field name="implied_ids" eval="[(4, ref('group_project_cost_admin'))]"/>
+    </record>
+</odoo>
