@@ -1,0 +1,10 @@
+1-cost-estimate menu as a child of project menu
+2-deleted the breakdown view->dead code
+3-send_state_email sends an actual email not a chatter message
+4-added latest cost estimate field on the project.project kanban view
+5-breakdown lines can be products from the system
+6-cost-estimate smart button in project form is invisible if estimate count =0
+7-added a wizard (rejection-reason) when state='rejected' and store it in history model
+8-added non negative validation on unit cost
+9-added non zero validation on qty
+10-userError when submetting an estimate of 0 breakdown line
