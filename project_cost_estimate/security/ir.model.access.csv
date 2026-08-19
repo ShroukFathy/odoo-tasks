@@ -5,3 +5,7 @@ access_project_cost_estimate_super_admin,project.cost.estimate.super.admin,model
 access_project_cost_breakdown_user,project.cost.breakdown.user,model_project_cost_breakdown,group_project_cost_user,1,1,1,0
 access_project_cost_breakdown_admin,project.cost.breakdown.admin,model_project_cost_breakdown,group_project_cost_admin,1,1,1,1
 access_project_cost_breakdown_super_admin,project.cost.breakdown.super.admin,model_project_cost_breakdown,group_project_super_admin,1,1,1,1
+access_rejection_reason_super_admin,rejection.reason.super.admin,model_rejection_reason,group_project_super_admin,1,1,1,1
+access_project_cost_estimate_history_user,project.cost.estimate.history.user,model_project_cost_estimate_history,group_project_cost_user,1,0,0,0
+access_project_cost_estimate_history_admin,project.cost.estimate.history.admin,model_project_cost_estimate_history,group_project_cost_admin,1,1,1,0
+access_project_cost_estimate_history_super_admin,project.cost.estimate.history.super.admin,model_project_cost_estimate_history,group_project_super_admin,1,1,1,1

@@ -1,0 +1,33 @@
+<odoo>
+    <record id="project_project_form_inherit_cost_estimate" model="ir.ui.view">
+    <field name="name">project.project.form.inherit.cost.estimate</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.edit_project"/>
+    <field name="arch" type="xml">
+        <xpath expr="//div[@name='button_box']" position="inside">
+            <button name="action_view_cost_estimates" type="object"
+                    class="oe_stat_button" icon="fa-money" invisible="cost_estimate_count==0">
+                <field name="cost_estimate_count" widget="statinfo" string="Cost Estimates"/>
+            </button>
+        </xpath>
+    </field>
+    </record>
+    <record id="project_kanban_inherit_cost_estimate" model="ir.ui.view">
+    <field name="name">project.project.kanban.inherit.cost.estimate</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.view_project_kanban"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='tag_ids']" position="after">
+            <field name="latest_cost_estimate" invisible="1"/>
+            <field name="latest_cost_estimate_state" invisible="1"/>
+            <div class="mt-1" t-if="record.latest_cost_estimate_state.raw_value">
+                <span class="text-muted">Latest Estimate: </span>
+                <span t-esc="record.latest_cost_estimate.value"/>
+                <span t-attf-class="badge ms-1 bg-#{record.latest_cost_estimate_state.raw_value == 'approved' and 'success' or record.latest_cost_estimate_state.raw_value == 'rejected' and 'danger' or record.latest_cost_estimate_state.raw_value == 'submitted' and 'warning' or 'secondary'}">
+                    <t t-esc="record.latest_cost_estimate_state.value"/>
+                </span>
+            </div>
+        </xpath>
+    </field>
+</record>
+</odoo>

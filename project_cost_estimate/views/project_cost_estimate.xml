@@ -58,19 +58,19 @@
         </kanban>
     </field>
 </record>
-    <record id="project_project_form_inherit_cost_estimate" model="ir.ui.view">
-    <field name="name">project.project.form.inherit.cost.estimate</field>
-    <field name="model">project.project</field>
-    <field name="inherit_id" ref="project.edit_project"/>
-    <field name="arch" type="xml">
-        <xpath expr="//div[@name='button_box']" position="inside">
-            <button name="action_view_cost_estimates" type="object"
-                    class="oe_stat_button" icon="fa-money">
-                <field name="cost_estimate_count" widget="statinfo" string="Cost Estimates"/>
-            </button>
-        </xpath>
-    </field>
-</record>
+<!--    <record id="project_project_form_inherit_cost_estimate" model="ir.ui.view">-->
+<!--    <field name="name">project.project.form.inherit.cost.estimate</field>-->
+<!--    <field name="model">project.project</field>-->
+<!--    <field name="inherit_id" ref="project.edit_project"/>-->
+<!--    <field name="arch" type="xml">-->
+<!--        <xpath expr="//div[@name='button_box']" position="inside">-->
+<!--            <button name="action_view_cost_estimates" type="object"-->
+<!--                    class="oe_stat_button" icon="fa-money">-->
+<!--                <field name="cost_estimate_count" widget="statinfo" string="Cost Estimates"/>-->
+<!--            </button>-->
+<!--        </xpath>-->
+<!--    </field>-->
+<!--    </record>-->
 
       <record id="action_project_cost_estimate" model="ir.actions.act_window">
         <field name="name">Cost-Estimate</field>
@@ -78,6 +78,6 @@
         <field name="view_mode">list,form,kanban</field>
       </record>
 
-    <menuitem id="project_cost_root" name="Cost Estimate" action="action_project_cost_estimate" groups="project_cost_estimate.group_project_cost_user"/>
+    <menuitem id="project_cost_root" name="Cost Estimate" parent="project.menu_main_pm" action="action_project_cost_estimate" groups="project_cost_estimate.group_project_cost_user"/>
 
 </odoo>
