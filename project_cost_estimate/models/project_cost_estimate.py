@@ -1,7 +1,5 @@
 from odoo import fields, models, api
 from odoo.exceptions import UserError
-from typing import Required
-
 
 class ProjectCostEstimate(models.Model):
     _name = 'project.cost.estimate'
@@ -44,8 +42,6 @@ class ProjectCostEstimate(models.Model):
 
     def action_reject(self):
         for rec in self:
-            if not self.env.user.has_group('project_cost_estimate.group_project_super_admin'):
-                raise UserError("You are not allowed to reject cost estimates.")
             action = self.env['ir.actions.actions']._for_xml_id('project_cost_estimate.action_rejection_reason_wizard')
             action['context'] = {'default_estimate_id': self.id}
             return action
