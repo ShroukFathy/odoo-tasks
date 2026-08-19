@@ -26,7 +26,8 @@
                     <page string="Cost Breakdown">
                         <field name="breakdown_ids" readonly="state != 'draft'">
                             <list editable="bottom">
-                                <field name="name"/>
+<!--                            <field name="name"/>-->
+                                <field name="product_id"/>
                                 <field name="quantity"/>
                                 <field name="unit_cost"/>
                                 <field name="subtotal" sum="Total"/>

@@ -2,7 +2,7 @@
     'name': 'Cost Estimate',
     'version': '1.0',
     'description': 'Project cost estimate',
-    'depends': ['base', 'mail','project'],
+    'depends': ['base', 'mail','project','product'],
     'data': [
         'security/project_cost_estimate_security.xml',
         'security/ir.model.access.csv',

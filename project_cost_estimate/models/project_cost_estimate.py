@@ -16,6 +16,7 @@ class ProjectCostEstimate(models.Model):
         ('rejected', 'Rejected'),
     ], default='draft', string="Status", tracking=True)
 
+
     @api.depends('breakdown_ids.subtotal')
     def compute_estimated_total_cost(self):
          for rec in self:
