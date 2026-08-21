@@ -4,7 +4,7 @@ class ProjectCostBreakdown(models.Model):
     _name = 'project.cost.breakdown'
 
     # name = fields.Char(string="Estimate")
-    product_id = fields.Many2one(comodel_name='product.product', string="Estimate")
+    product_id = fields.Many2one(comodel_name='product.product', string="Estimate", required=True)
     quantity=fields.Float(string='Quantity')
     unit_cost=fields.Float(string='Unit Cost')
     subtotal=fields.Float(compute='compute_subtotal',string='Sub Total',store=True)

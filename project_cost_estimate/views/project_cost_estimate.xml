@@ -5,6 +5,9 @@
     <field name="arch" type="xml">
         <form>
             <header>
+                <h1> Estimate Info</h1>
+                <button name="regenerate_sequence" type="object" string="Regenerate Sequence"
+                        groups="project_cost_estimate.group_project_super_admin"/>
                 <button name="action_submit" type="object" string="Submit"
                         invisible="state != 'draft'"
                         groups="project_cost_estimate.group_project_cost_admin,project_cost_estimate.group_project_super_admin"/>
@@ -18,6 +21,7 @@
             </header>
             <sheet>
                 <group>
+                    <field name="ref"/>
                     <field name="name" readonly="state != 'draft'"/>
                     <field name="project_id" readonly="state != 'draft'"/>
                     <field name="estimated_total_cost"/>

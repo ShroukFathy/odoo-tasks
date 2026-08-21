@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="seq_cost_estimate" model="ir.sequence">
+            <field name="name">estimate seq</field>
+            <field name="code">estimate_seq</field>
+            <field name="prefix">EST/</field>
+            <field name="padding">5</field>
+        </record>
+    </data>
+</odoo>

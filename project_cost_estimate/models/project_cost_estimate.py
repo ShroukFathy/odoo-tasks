@@ -4,8 +4,8 @@ from odoo.exceptions import UserError
 class ProjectCostEstimate(models.Model):
     _name = 'project.cost.estimate'
     _inherit = ['mail.thread', 'mail.activity.mixin']
-
     name=fields.Char(string="name", required=True)
+    ref=fields.Char(string="Reference",default='New',readonly=True)
     project_id=fields.Many2one('project.project',required=True)
     breakdown_ids= fields.One2many('project.cost.breakdown','estimate_id', string="Line cost")
     estimated_total_cost= fields.Float(compute='compute_estimated_total_cost',string="Estimated Total Cost", store=True)
@@ -16,6 +16,12 @@ class ProjectCostEstimate(models.Model):
         ('rejected', 'Rejected'),
     ], default='draft', string="Status", tracking=True)
 
+    @api.model
+    def create(self, vals):
+        res = super(ProjectCostEstimate, self).create(vals)
+        if res.ref == 'New':
+            res.ref = self.env['ir.sequence'].next_by_code('estimate_seq')
+        return res
 
     @api.depends('breakdown_ids.subtotal')
     def compute_estimated_total_cost(self):
@@ -70,6 +76,16 @@ class ProjectCostEstimate(models.Model):
                 'new_state': new_state,
                 'reason': reason or "",
             })
+    def regenerate_sequence(self):
+        sequence = self.env.ref('project_cost_estimate.seq_cost_estimate')
+        if sequence:
+            parts=sequence.prefix.split("/")
+            new_sequence= self.env.company.cost_estimate_seq.join(parts[0])
+
+        return new_sequence
+
+
+
 
 
 
